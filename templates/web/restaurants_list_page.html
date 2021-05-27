@@ -1,0 +1,34 @@
+{% extends 'layouts/master.html' %}
+{% block title %}View{% endblock %}
+{% block body %}
+<h1>Restaurants</h1>
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th scope="col">Name</th>
+			<th scope="col">Score</th>
+			<th scope="col">Category</th>
+			<td></td>
+		</tr>
+	</thead>
+	<tbody>
+	{% for restaurant in rests_query %}
+		<tr>
+			<td>{{ restaurant.restaurant_name }}</td>
+			<td>{{ restaurant.score }}</td>
+			<td>{{ restaurant.category }}</td>
+			<td class="text-right">
+				<div class="row">
+					<form action="{{ url_for('delete_restaurant') }}" method="post" class="pull-right">
+						<input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+						<input type="hidden" name="id" value="{{ restaurant.id }}">
+						<input type="submit" class="btn btn-danger" data-toggle="confirmation" value="Delete">
+					</form>
+					<a class="btn btn-primary pull-right" href="{{ url_for('update_restaurant', id=restaurant.id) }}">Edit</a>
+				</div>
+			</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+{% endblock %}
