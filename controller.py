@@ -1,10 +1,7 @@
 from flask import flash
-# from typing import List
 
 from page_maker import PageMaker
 from db_connection import DBConnection
-# from model.restaurants import Parser
-
 from forms import RestaurantForm
 
 
