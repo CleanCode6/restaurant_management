@@ -16,7 +16,6 @@ class Controller:
 
 	def restaurants_list_controller(self):
 		rests_query = self.db.get_restaurants()
-		print(rests_query)
 		self.db.close_connection()
 		return self.page_mk.make_restautants_list_page(rests_query)
 		
@@ -30,19 +29,17 @@ class Controller:
 			
 			try:
 				flash('Restaurant registered correctly', 'success')
-				# 설계에는 없음..! 일단,,
 				return self.restaurants_list_controller()
 			except:
 				self.db.rollback()
 				flash('Error restaurant registeration.', 'danger')
-		
+				return
+			
 		# get
 		return self.page_mk.make_resgister_page(form)
 
 	def update_restaurant_controller(self, request, restaurant_id):
 		rest = self.db.get_restaurant(restaurant_id)
-		print('controller: \n',rest)
-		# print(type(rest))
 		form = RestaurantForm(obj=rest)
 
 		if form.validate_on_submit():
@@ -65,6 +62,7 @@ class Controller:
 		try:
 			restaurant_id=request.form['restaurant_id']  # str
 			self.db.delete_restaurant(restaurant_id) 
+
 			flash('Delete successfully.', 'danger')
 		except:
 			self.db.rollback()
