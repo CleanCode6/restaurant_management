@@ -28,10 +28,10 @@ def register_restaurant():
     return cont.register_restaurant_controller(request)
 
 
-@app.route("/update_restaurant/<id>", methods=('GET', 'POST'))
-def update_restaurant(id):
+@app.route("/update_restaurant/<restaurant_id>", methods=('GET', 'POST'))
+def update_restaurant(restaurant_id):
     cont = Controller()
-    return cont.update_restaurant_controller(request, id)
+    return cont.update_restaurant_controller(request, restaurant_id)
 
 
 @app.route("/restaurants/delete", methods=('POST',))
@@ -41,10 +41,12 @@ def delete_restaurant():
 
 
 if __name__ == "__main__":
-    basedir = os.path.abspath(os.path.dirname(__file__))
+    # basedir = os.path.abspath(os.path.dirname(__file__))
 
+    # app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:1234@localhost:3306/Restaurants"
     # app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True  # 사용자에게 원하는 정보를 전달할 때 나오는게 TEARDOWN, 그럴 때마다 COMMIT(실제로 DB에 반영)
     # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  #
+    app.config['SECRET_KEY'] = 'my secret' 
 
     # csrf
     csrf = CSRFProtect(app)
