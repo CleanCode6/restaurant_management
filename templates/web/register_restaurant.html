@@ -1,9 +1,0 @@
-{% extends 'layouts/master.html' %}
-{% block title %}Register Restaurant{% endblock %}
-{% block body %}
-<h1>Register Restaurant</h1>
-<form action="{{ url_for('register_restaurant') }}" method="post">
-	{{ generate_fields(form) }}
-	<input type="submit" class="btn btn-success" value="Add">
-</form>
-{% endblock %}
