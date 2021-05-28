@@ -60,7 +60,14 @@ class DBConnection:
 		cursor.execute(QUERY)
 		self.DB.commit()
 
-	
+	# return update QUERY string
+	def make_update_query(self, rest_query): 
+		result = ''
+		for key, val in rest_query.items():
+			# key=val, key=val, ***
+			result += "{}='{}', ".format(key, val[0])
+		return result[:-2]  # 마지막 ', ' 제거
+
 	def delete_restaurant(self, restaurant_id):
 		cursor = self.DB.cursor()
 		QUERY = f"DELETE FROM Restaurants WHERE restaurant_id='{restaurant_id}';"
