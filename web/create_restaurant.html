@@ -1,0 +1,10 @@
+{% extends 'layouts/master.html' %}
+{% block title %}Create Restaurant{% endblock %}
+{% block body %}
+<h1>Create Restaurant</h1>
+{% from "helpers/_forms.html" import generate_fields %}
+<form action="{{ url_for('create_restaurant') }}" method="post">
+	{{ generate_fields(form) }}
+	<input type="submit" class="btn btn-success" value="Add">
+</form>
+{% endblock %}
