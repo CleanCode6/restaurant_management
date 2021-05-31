@@ -1,8 +1,16 @@
 # restaurant_management
 CAU_Restaurant_Guide의 관리자 page로 Restaurant리스트들을 각각 CRUD합니다.
+
+4가지 page로 구성되어 있습니다.
+- /restaurant -> 목록
+- /register_restaurant
+- /update_restaurant/{id}
+- /restaurents/delete
 ## install
 pip install -r requirements.txt
-python3 migrations.py
+### environment
+python: 3.9.5
+flask:2.0.1
 ## run
 python3 app.py
 ## project directory
