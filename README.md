@@ -17,7 +17,7 @@ python3 app.py
 9. page_maker.py
 10. restaurants_test.py
 * * *
-##template 
+template 
 1. forms.html
 2. master.html
 3. create_restaurant.html
