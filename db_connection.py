@@ -5,15 +5,6 @@ from model.restaurants import Restaurants
 
 class DBConnection:
 	def __init__(self):
-		# self.DB = pymysql.connect(
-		# 		user='root', 
-		# 		passwd='1234', 
-		# 		host='localhost', 
-		# 		port=3306,
-		# 		db='Restaurants', 
-		# 		charset='utf8',
-		# 		cursorclass=pymysql.cursors.DictCursor
-		# 	)
 		self.DB = pymysql.connect(
 				user='cau', 
 				passwd='kG6byywEExRr', 
